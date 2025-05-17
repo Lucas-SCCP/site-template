@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ImageElement = (data) => {
   return (
     <img

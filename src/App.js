@@ -1,71 +1,58 @@
-import React, { useEffect, useState, Suspense } from 'react'
-import { Row, Container } from 'react-bootstrap'
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom'
-import AnalyticsService from './services/AnalyticsService'
-import ApiService from './services/ApiService'
-import { createElement } from './services/ElementsService'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+import constructorService from './services/ConstructorService'
+
+import PageRenderer from './components/PageRenderer'
+import MainLayout from './components/MainLayout'
+import Loading from './components/Loading'
+
 import './App.css';
 
 function App() {
 
-  const [website, setWebsite] = useState(null)
+  const [website, setWebsite] = useState(undefined)
 
   useEffect(() => {
-    // AnalyticsService.initialize();
     const fetchData = async () => {
-      const result = await ApiService.getStructure(1)
-      setWebsite(result)
+      try {
+        const website = await constructorService.fetchWebsiteFromApi()
+        setWebsite(website)
+      } catch (error) {
+        console.error('Erro ao fazer conexão com a API:', error.message)
+
+        try {
+          const website = constructorService.fetchWebsiteFromCache()
+          if (!website) {
+            throw new Error('Nenhum cache encontrado')
+          }
+
+          console.warn('Usando dados do cache para construção do site')
+          setWebsite(website)
+        } catch (error) {
+          console.error('Erro ao carregar o site: ', error.message)
+          setWebsite({ error: true })
+        }
+      }
     }
     fetchData()
   }, [])
 
-  if (!website) {
-    return <div>Carregando</div>;
+  if (website === undefined) {
+    return <Loading />
   }
   
   return (
     <Router>
       <Routes>
-        <Route element={<DefaultLayout />}>
+        <Route element={<MainLayout />}>
           {website.pages.map((page) => (
-            <Route key={page.path} path={page.path} element={<DefaultComponent page={page} />} />
+            <Route key={page.path} path={page.path} element={<PageRenderer page={page} />} />
           ))}
         </Route>
       </Routes>
     </Router>
-  );
-}
-
-function DefaultComponent({ page }) {
-  return (
-    <Suspense fallback={<div>Carregando...</div>}>
-      <Container>
-        <Row>
-        {page.components.map((component, index) => {
-          return Object.values(component.elements.content).map((content, idx) => {
-            return (
-              createElement(content)
-            )
-          })
-        })}
-        </Row>
-      </Container>
-    </Suspense>
   )
 }
 
-function DefaultLayout() {
-  return (
-    <>
-      <Header />
-        <main>
-          <Outlet />
-        </main>
-      <Footer />
-    </>
-  )
-}
-
-export default App;
+export default App

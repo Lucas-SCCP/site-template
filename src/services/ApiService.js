@@ -2,20 +2,20 @@ class ApiService {
 
   async getStructure(id) {
     try {
-      const response = await fetch(process.env.REACT_APP_API + '/website/' + id + '/structure');
+      const response = await fetch(process.env.REACT_APP_API + '/website/' + id + '/structure')
       if (!response.ok) {
-        throw new Error(`Erro: ${response.status}`);
+        throw new Error(response.status)
       }
-      const json = await response.json();
+      const json = await response.json()
 
       return json.data
     } catch (error) {
-      console.error('Erro ao buscar dados:', error);
-      return null;
+      console.error('Erro ao buscar dados da API:', error)
+      throw new Error(error)
     }
   }
 }
 
-const apiService = new ApiService();
+const apiService = new ApiService()
 
-export default apiService;
+export default apiService

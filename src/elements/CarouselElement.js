@@ -1,4 +1,3 @@
-import React from 'react'
 import { Row, Col, Carousel } from 'react-bootstrap'
 
 const CarouselElement = (data) => {

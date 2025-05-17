@@ -4,7 +4,7 @@ import ElementFactory from '../elements/ElementFactory'
 
 export const createElement = (element) => {
   return (
-    <Col key={Math.random()} xs={12} md={12} lg={element.size}>
+    <Col key={element.id} xs={12} md={12} lg={element.size}>
       {ElementFactory.create(element.type, element)}
     </Col>
   )
@@ -13,7 +13,7 @@ export const createElement = (element) => {
 export const createLine = (elements) => {
   return elements.map((element) => {
     return (
-      <Col key={Math.random()} xs={12} md={12} lg={element.size}>
+      <Col key={element.id} xs={12} md={12} lg={element.size}>
         {ElementFactory.create(element.type, element)}
       </Col>
     )

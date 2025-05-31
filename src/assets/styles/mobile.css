@@ -1,3 +1,15 @@
 @media (max-width: 767.98px) {
-  
+  .titulo-coluna-esquerda {
+    text-align: center;
+  }
+
+  .titulo-coluna-direita {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    top: -280px;
+  }
 }

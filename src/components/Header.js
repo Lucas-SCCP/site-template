@@ -3,29 +3,26 @@ import Menu from './Menu';
 
 function Header() {
   return (
-    <Container fluid>
+    <Container fluid style={{ backgroundColor: '#000' }}>
       <Row>
         <Col xs={12} md={12} lg={12}>
           <Container>
-            <Row style={{ textAlign: 'center' }}>
-              <Col xs={12} md={12} lg={12} style={{ padding: '20px' }}>
-                <img
-                  src="https://placehold.co/600x400"
-                  width="200"
-                  className="d-inline-block align-top"
-                  alt="Logo"
-                  style={{ textAlign: 'center' }}
-                />
-                <br />
-                <span className='title' style={{ display: 'none' }}>Site Template</span>
+            <Row className='titulo-linha'>
+              <Col className='titulo-coluna-esquerda' xs={12} sm={6} md={6} lg={6}>
+                <span className='titulo-texto-esquerda modak-regular-400' >
+                  NOIS
+                </span>
+              </Col>
+              <Col className='titulo-coluna-direita' xs={12} sm={6} md={6} lg={6}>
+                <span className='titulo-texto-direita krona'> DESENVOLVIMENTO <br />DE SOFTWARE</span>
               </Col>
             </Row>
           </Container>
-      </Col>
-      <Col className='cor-primaria'>
-        <Container>
-          <Navbar expand="lg">
-            <Menu />
+        </Col>
+        <Col className='cor-primaria'>
+          <Container>
+            <Navbar expand="lg">
+              <Menu />
             </Navbar>
           </Container>
         </Col>

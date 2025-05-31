@@ -1,0 +1,32 @@
+/** Modak **/
+.modak-regular-100 {
+  font-family: "Modak", system-ui;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.modak-regular-200 {
+  font-family: "Modak", system-ui;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.modak-regular-300 {
+  font-family: "Modak", system-ui;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.modak-regular-400 {
+  font-family: "Modak", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/** Krona **/
+
+.krona {
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

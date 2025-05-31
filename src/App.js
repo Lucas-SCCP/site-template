@@ -7,8 +7,6 @@ import PageRenderer from './components/PageRenderer'
 import MainLayout from './components/MainLayout'
 import Loading from './components/Loading'
 
-import './App.css';
-
 function App() {
 
   const [website, setWebsite] = useState(undefined)

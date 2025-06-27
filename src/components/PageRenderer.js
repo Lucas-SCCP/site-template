@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { Row, Container } from 'react-bootstrap'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 import { createElement } from '../services/ElementsService'
 

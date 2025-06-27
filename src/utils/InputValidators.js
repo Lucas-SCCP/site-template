@@ -25,10 +25,7 @@ export function dateValidate(data) {
   const [dia, mes, ano] = data.split('/')
   const d = new Date(`${ano}-${mes}-${dia}`)
   const hoje = new Date()
-  return (
-    /^\d{2}\/\d{2}\/\d{4}$/.test(data) &&
-    d <= hoje
-  )
+  return /^\d{2}\/\d{2}\/\d{4}$/.test(data) && d <= hoje
 }
 
 export function emailValidation(email) {

@@ -4,7 +4,7 @@ const CarouselComponent = (data) => {
   return (
     <Row>
       <Col>
-        <Carousel indicators={false} className='slider'>
+        <Carousel indicators={false} className="slider">
           {data.content.map((element, index) => (
             <Carousel.Item key={element.id}>
               <img
@@ -13,14 +13,14 @@ const CarouselComponent = (data) => {
                 style={{
                   width: '100%',
                   height: 'auto',
-                  objectFit: 'cover'
+                  objectFit: 'cover',
                 }}
               />
             </Carousel.Item>
           ))}
         </Carousel>
-        </Col>
-      </Row>
+      </Col>
+    </Row>
   )
 }
 

@@ -9,17 +9,17 @@ const ButtonElement = (element) => {
   const properties = JSON.parse(element.properties)
   const style = properties.style
 
-  const hidden = UseFormStore(state => state.elements[element.id]?.hidden)
-  const loading = UseFormStore(state => state.elements[element.id]?.loading)
-  
-  const showElement = UseFormStore(state => state.showElement)
-  const hideElement = UseFormStore(state => state.hideElement)
-  const registerElement = UseFormStore(state => state.registerElement)
+  const hidden = UseFormStore((state) => state.elements[element.id]?.hidden)
+  const loading = UseFormStore((state) => state.elements[element.id]?.loading)
+
+  const showElement = UseFormStore((state) => state.showElement)
+  const hideElement = UseFormStore((state) => state.hideElement)
+  const registerElement = UseFormStore((state) => state.registerElement)
 
   useEffect(() => {
     registerElement(element.id, element.component_id, {
       type: 'button',
-      hidden: properties.visibilityAfter
+      hidden: properties.visibilityAfter,
     })
   }, [element.id, element.component_id, properties, registerElement])
 
@@ -28,9 +28,9 @@ const ButtonElement = (element) => {
       event.preventDefault()
 
       UseFormStore.getState().validateAllFields(element.component_id)
-      
+
       const formData = UseFormStore.getState().getElementsByForm(element.component_id)
-      const hasErrors = formData.some(e => e.error)
+      const hasErrors = formData.some((e) => e.error)
 
       if (hasErrors) {
         return false
@@ -73,19 +73,17 @@ const ButtonElement = (element) => {
         rel={properties.href ? 'noopener noreferrer' : undefined}
         disabled={loading}
         onClick={handleClick}
-        className='cor-primaria'
+        className="cor-primaria"
         style={{ width: '100%', marginBottom: '10px' }}
       >
-        {
-          loading ? (
-            <>
-              <Spinner as='span' animation='border' size='sm' role='status' aria-hidden='true' />
-              {' ' + properties.loadingMessage}
-            </>
-          ) : (
-            properties.title
-          )
-        }
+        {loading ? (
+          <>
+            <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+            {' ' + properties.loadingMessage}
+          </>
+        ) : (
+          properties.title
+        )}
       </Button>
     </ElementColWrapper>
   )

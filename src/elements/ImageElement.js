@@ -9,7 +9,7 @@ const ImageElement = (element) => {
         style={{
           width: '100%',
           height: 'auto',
-          objectFit: 'cover'
+          objectFit: 'cover',
         }}
       />
     </ElementColWrapper>

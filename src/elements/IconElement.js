@@ -5,7 +5,7 @@ const IconElement = (element) => {
   const properties = JSON.parse(element.properties)
   const style = properties.style
 
-  const IconElement = React.lazy(() => 
+  const IconElement = React.lazy(() =>
     import(`react-icons/fa`).then((module) => {
       const Icon = module[properties.name]
       if (!Icon) {
@@ -18,7 +18,7 @@ const IconElement = (element) => {
   return (
     <ElementColWrapper element={element}>
       <Suspense fallback={null}>
-        <IconElement size={20} className='texto-primaria' style={{ marginRight: '8px' }} />
+        <IconElement size={20} className="texto-primaria" style={{ marginRight: '8px' }} />
       </Suspense>
     </ElementColWrapper>
   )

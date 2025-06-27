@@ -31,8 +31,8 @@ class ConstructorService {
     const websiteStructure = await this.fetchWebsiteFromCache()
 
     return websiteStructure.pages
-      .filter(page => page.menu === 1)
-      .map(page => ({
+      .filter((page) => page.menu === 1)
+      .map((page) => ({
         id: page.id,
         name: page.name,
         path: page.path,

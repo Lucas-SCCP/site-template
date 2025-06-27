@@ -7,7 +7,7 @@ const ElementType = {
   File: 14,
   Alert: 7,
   Link: 11,
-  Line: 15
+  Line: 15,
 }
 
 Object.freeze(ElementType)

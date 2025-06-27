@@ -7,7 +7,7 @@ import {
   cpfValidation as cpfValidationUtil,
   cpfValidate as cpfValidateUtil,
   phoneValidation as phoneValidationUtil,
-  phoneValidate as phoneValidateUtil
+  phoneValidate as phoneValidateUtil,
 } from '../utils/InputValidators'
 
 class InputValidateService {

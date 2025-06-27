@@ -7,14 +7,14 @@ const AlertElement = (element) => {
   const properties = JSON.parse(element.properties)
   const style = properties.style
 
-  const hidden = UseFormStore(state => state.elements[element.id]?.hidden)
-  
-  const registerElement = UseFormStore(state => state.registerElement)
+  const hidden = UseFormStore((state) => state.elements[element.id]?.hidden)
+
+  const registerElement = UseFormStore((state) => state.registerElement)
 
   useEffect(() => {
     registerElement(element.id, element.component_id, {
       type: 'alert',
-      hidden: properties.visibilityAfter
+      hidden: properties.visibilityAfter,
     })
   }, [element.id, element.component_id, properties, registerElement])
 
@@ -22,11 +22,9 @@ const AlertElement = (element) => {
 
   return (
     <ElementColWrapper element={element}>
-      <Alert hidden={hidden} variant={properties.variant} className='text-center'>
+      <Alert hidden={hidden} variant={properties.variant} className="text-center">
         <Alert.Heading>{properties.title}</Alert.Heading>
-        <p className='mb-0'>
-          {properties.message}
-        </p>
+        <p className="mb-0">{properties.message}</p>
       </Alert>
     </ElementColWrapper>
   )

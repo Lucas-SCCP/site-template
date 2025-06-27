@@ -8,7 +8,6 @@ import MainLayout from './components/MainLayout'
 import Loading from './components/Loading'
 
 function App() {
-
   const [website, setWebsite] = useState(undefined)
 
   useEffect(() => {
@@ -40,7 +39,7 @@ function App() {
   if (website === undefined) {
     return <Loading />
   }
-  
+
   return (
     <Router>
       <Routes>

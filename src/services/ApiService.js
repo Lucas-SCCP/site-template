@@ -1,5 +1,4 @@
 class ApiService {
-
   async getStructure(id) {
     try {
       const response = await fetch(process.env.REACT_APP_API + '/website/' + id + '/structure')

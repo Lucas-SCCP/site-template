@@ -22,27 +22,29 @@ function Header() {
             <Row style={{ textAlign: 'center' }}>
               <Col xs={12} md={12} lg={12} style={{ padding: '20px' }}>
                 <img
-                  src='https://placehold.co/400'
-                  width='200'
-                  className='d-inline-block align-top'
-                  alt='Logo'
+                  src="https://placehold.co/400"
+                  width="200"
+                  className="d-inline-block align-top"
+                  alt="Logo"
                   style={{ textAlign: 'center' }}
                 />
                 <br />
-                <span className='title' style={{ display: 'none' }}>Site Template</span>
+                <span className="title" style={{ display: 'none' }}>
+                  Site Template
+                </span>
               </Col>
             </Row>
           </Container>
-      </Col>
-      {Array.isArray(menu) && menu.length > 0 && (
-        <Col className='cor-primaria'>
-          <Container>
-            <Navbar expand='lg'>
-              <Menu menu={menu} />
-            </Navbar>
-          </Container>
         </Col>
-      )}
+        {Array.isArray(menu) && menu.length > 0 && (
+          <Col className="cor-primaria">
+            <Container>
+              <Navbar expand="lg">
+                <Menu menu={menu} />
+              </Navbar>
+            </Container>
+          </Col>
+        )}
       </Row>
     </Container>
   )

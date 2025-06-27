@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import constructorService from './services/ConstructorService'
 
-import PageRenderer from './components/PageRenderer'
+import PageRendererService from './services/PageRendererService'
 import MainLayout from './components/MainLayout'
 import Loading from './components/Loading'
 
@@ -16,6 +16,7 @@ function App() {
       try {
         const website = await constructorService.fetchWebsiteFromApi()
         setWebsite(website)
+        console.log('website', website)
       } catch (error) {
         console.error('Erro ao fazer conexão com a API:', error.message)
 
@@ -45,7 +46,7 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           {website.pages.map((page) => (
-            <Route key={page.path} path={page.path} element={<PageRenderer page={page} />} />
+            <Route key={page.path} path={page.path} element={<PageRendererService page={page} />} />
           ))}
         </Route>
       </Routes>

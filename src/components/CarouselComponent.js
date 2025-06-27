@@ -1,12 +1,12 @@
 import { Row, Col, Carousel } from 'react-bootstrap'
 
-const CarouselElement = (data) => {
+const CarouselComponent = (data) => {
   return (
     <Row>
       <Col>
         <Carousel indicators={false} className='slider'>
           {data.content.map((element, index) => (
-            <Carousel.Item key={index}>
+            <Carousel.Item key={element.id}>
               <img
                 src={element.content}
                 alt={element.title}
@@ -24,4 +24,4 @@ const CarouselElement = (data) => {
   )
 }
 
-export default CarouselElement
+export default CarouselComponent

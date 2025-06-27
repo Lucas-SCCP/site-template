@@ -1,5 +1,8 @@
 import apiService from './ApiService'
 import cacheService from './CacheService'
+import { Col } from 'react-bootstrap'
+import ComponentFactory from '../factories/ComponentFactory'
+import ElementFactory from '../factories/ElementFactory'
 
 class ConstructorService {
   async fetchWebsiteFromApi() {
@@ -10,13 +13,12 @@ class ConstructorService {
       throw new Error('Site não encontrado')
     }
 
-    console.log(website)
     localStorage.setItem('websiteData', JSON.stringify(website))
 
     return website
   }
 
-  fetchWebsiteFromCache() {
+  async fetchWebsiteFromCache() {
     const website = cacheService.getStructure()
     if (!website) {
       throw new Error('Site não encontrado')
@@ -25,15 +27,34 @@ class ConstructorService {
     return website
   }
 
-  fetchMenu() {
-    const websiteStructure = this.fetchWebsiteFromCache()
+  async fetchMenu() {
+    const websiteStructure = await this.fetchWebsiteFromCache()
 
-    return websiteStructure.pages.map(page => ({
-      id: page.id,
-      name: page.name,
-      path: page.path,
-      type: 'link'
-    }))
+    return websiteStructure.pages
+      .filter(page => page.menu === 1)
+      .map(page => ({
+        id: page.id,
+        name: page.name,
+        path: page.path,
+        type: 'link',
+      }))
+  }
+
+  createComponent(component) {
+    return ComponentFactory.create(component)
+  }
+
+  createElement(element) {
+    return ElementFactory.create(element)
+  }
+
+  createLine(element) {
+    // VERIFICAR SE VAI SER UTILIZAVEL
+    return (
+      <Col key={element.id} xs={12} md={12} lg={element.size}>
+        {ElementFactory.create(element.type, element)}
+      </Col>
+    )
   }
 }
 

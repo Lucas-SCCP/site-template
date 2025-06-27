@@ -1,5 +1,5 @@
-import { Row, Col } from 'react-bootstrap';
-import { FaFacebookF, FaInstagram, FaLink } from 'react-icons/fa';
+import { Row, Col } from 'react-bootstrap'
+import { FaFacebookF, FaInstagram, FaLink } from 'react-icons/fa'
 
 function SocialIcons() {
   const elements = [
@@ -18,19 +18,19 @@ function SocialIcons() {
       icon: <FaLink />,
       description: 'Logo do Linktree'
     }
-  ];
+  ]
 
   return (
     <Row>
       {elements.map((element, index) => (
-        <Col key={index} className='text-center social-icons'>
+        <Col key={element.id} className='text-center social-icons texto-primaria'>
           <a href={element.url} target='_blank' rel='noreferrer' aria-label={elements.description}>
             {element.icon}
           </a>
         </Col>
       ))}
     </Row>
-  );
+  )
 }
 
-export default SocialIcons;
+export default SocialIcons

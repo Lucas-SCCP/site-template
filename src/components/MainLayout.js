@@ -6,7 +6,7 @@ function MainLayout() {
   return (
     <>
       <Header />
-        <main>
+        <main className='background-image'>
           <Outlet />
         </main>
       <Footer />

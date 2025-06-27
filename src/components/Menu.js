@@ -1,36 +1,30 @@
-import { useEffect, useState } from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import constructorService from '../services/ConstructorService';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 
-function Menu() {
-  const [menu, setMenu] = useState(undefined)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const menu = constructorService.fetchMenu()
-      setMenu(menu)
-    }
-    fetchData()
-  }, [])
+function Menu({ menu }) {
 
   if (menu === undefined) {
-    return <div>Carregando menu</div>;
+    return <div>Carregando menu</div>
+  }
+
+  if (menu === null) {
+    return null
   }
 
   return (
     <>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav" className="menu">
-        <Nav className="mx-auto">
+      <Navbar.Toggle aria-controls='basic-navbar-nav' />
+      <Navbar.Collapse id='basic-navbar-nav' className='menu'>
+        <Nav className='mx-auto'>
           {menu.map((element, index) => {
+            // todo: criar factory para tipo de menu
             if (element.type === 'link') {
-              return (<Nav.Link key={index} href={element.path} style={{ color: '#FFF' }}>{element.name}</Nav.Link>)
+              return (<Nav.Link key={element.id} href={element.path} style={{ color: '#FFF' }}>{element.name}</Nav.Link>)
             } else if (element.type === 'dropdown') {
               return (
-                <NavDropdown key={index} title={element.name} id="basic-nav-dropdown" className="menu">
+                <NavDropdown key={element.id} title={element.name} id='basic-nav-dropdown' className='menu'>
                   {
-                    element.items.map((element, idx) => (
-                      <NavDropdown.Item key={idx} href={element.path}>{element.name}</NavDropdown.Item>
+                    element.items.map((item, idx) => (
+                      <NavDropdown.Item key={idx} href={item.path}>{item.name}</NavDropdown.Item>
                     ))
                   }
                 </NavDropdown>
@@ -41,7 +35,7 @@ function Menu() {
         </Nav>
       </Navbar.Collapse>
     </>
-  );
+  )
 }
 
-export default Menu;
+export default Menu

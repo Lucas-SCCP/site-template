@@ -24,13 +24,19 @@ class EmailService {
   }
 
   createBody(params) {
+    const firstName = params.find(e => e.name === 'firstNameInput')
+    const lastName = params.find(e => e.name === 'lastNameInput')
+    const birthDate = params.find(e => e.name === 'birthDateField')
+    const document = params.find(e => e.name === 'documentField')
+    const email = params.find(e => e.name === 'emailField')
+    const phone = params.find(e => e.name === 'phoneField')
     return {
-      'nomeRemetente': params.fromName,
-      'remetente': params.fromEmail,
-      'nomeDestinatario': params.toName,
-      'destinatario': params.toEmail,
-      'titulo': params.subject,
-      'mensagem': params.text
+      'senderName': '[Site] CT Clean Foods',
+      'sender': 'contato@nois.dev.br',
+      'recipientName': 'CT Clean Foods',
+      'recipient': 'lucas.2601@gmail.com',
+      'title': 'Mensagem enviada pelo formulário do site',
+      'message': `Nome: ${firstName.value} ${lastName.value}\nData de Nascimento: ${birthDate.value}\nCPF: ${document.value}\nE-mail: ${email.value}\nCelular: ${phone.value}`
     }
   }
 }

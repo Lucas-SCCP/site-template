@@ -1,14 +1,18 @@
-const ImageElement = (data) => {
+import ElementColWrapper from './ElementColWrapper'
+
+const ImageElement = (element) => {
   return (
-    <img
-      src={data.content}
-      alt={data.title}
-      style={{
-        width: '100%',
-        height: 'auto',
-        objectFit: 'cover'
-      }}
-    />
+    <ElementColWrapper element={element}>
+      <img
+        src={element.content}
+        alt={element.title}
+        style={{
+          width: '100%',
+          height: 'auto',
+          objectFit: 'cover'
+        }}
+      />
+    </ElementColWrapper>
   )
 }
 
